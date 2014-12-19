@@ -1,0 +1,16 @@
+#!/bin/bash
+#show absolute path of the file (include filename)
+if [ ! $1 ]
+then
+cat<<EOF
+Usage: fpwd <filename>
+Version: 0.1
+EOF
+    exit 1
+fi
+
+r_path=`dirname $1`
+fname=`basename $1`
+
+cd $r_path
+ls $fname| sed "s:^:`pwd`/: "
